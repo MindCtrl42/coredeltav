@@ -14,9 +14,9 @@ export default function ScrollZoomImage({
   src,
   alt,
   className = '',
-  aspectClassName = 'aspect-[16/10]',
+  aspectClassName = '',
   priority = false,
-  zoomRange = [1.0, 1.16],
+  zoomRange = [1.0, 1.07],
 }: ScrollZoomImageProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -32,16 +32,15 @@ export default function ScrollZoomImage({
   return (
     <div
       ref={containerRef}
-      className={`relative overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-900 ${aspectClassName} ${className}`}
+      className={`relative overflow-hidden rounded-2xl bg-neutral-950 border border-neutral-900/60 w-full ${aspectClassName} ${className}`}
     >
       <motion.img
         style={{ scale }}
         src={src}
         alt={alt}
         loading={priority ? 'eager' : 'lazy'}
-        className="w-full h-full object-cover will-change-transform select-none"
+        className="w-full h-auto block select-none will-change-transform"
       />
     </div>
   );
 }
-

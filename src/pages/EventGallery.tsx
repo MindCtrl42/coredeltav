@@ -20,127 +20,108 @@ function AdaptivePhotoSection({
 }) {
   if (!photos || photos.length === 0) return null;
 
-  // Case 1: Single image -> Cinematic wide focal frame
+  // Case 1: Single image -> Full container width in natural uncropped ratio
   if (photos.length === 1) {
     return (
       <div className="w-full">
         <ScrollZoomImage
           src={photos[0].src}
           alt={photos[0].alt || `${projectTitle} Still`}
-          aspectClassName="aspect-[16/10] sm:aspect-[16/9]"
-          zoomRange={[1.0, 1.15]}
         />
       </div>
     );
   }
 
-  // Case 2: Exactly 2 images -> 2-column balanced split
+  // Case 2: Exactly 2 images -> 2-column balanced split in natural uncropped ratio
   if (photos.length === 2) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
         <ScrollZoomImage
           src={photos[0].src}
           alt={photos[0].alt || `${projectTitle} Frame 1`}
-          aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
-          zoomRange={[1.0, 1.15]}
         />
         <ScrollZoomImage
           src={photos[1].src}
           alt={photos[1].alt || `${projectTitle} Frame 2`}
-          aspectClassName="aspect-[4/3] sm:aspect-[16/10]"
-          zoomRange={[1.0, 1.15]}
         />
       </div>
     );
   }
 
-  // Case 3: Exactly 3 images -> Signature asymmetric layout (Reference Image 2)
-  // Left: Tall vertical image | Right: Two stacked horizontal images
+  // Case 3: Exactly 3 images -> Asymmetric editorial layout in natural uncropped ratios
+  // Left: Feature image | Right: Two stacked detail images
   if (photos.length === 3) {
     return (
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-stretch">
-        <div className="md:col-span-6 flex">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+        <div className="md:col-span-6">
           <ScrollZoomImage
             src={photos[0].src}
             alt={photos[0].alt || `${projectTitle} Feature Still`}
-            aspectClassName="w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-auto md:h-full min-h-[380px]"
-            zoomRange={[1.0, 1.16]}
           />
         </div>
-        <div className="md:col-span-6 flex flex-col gap-4 md:gap-6 justify-between">
+        <div className="md:col-span-6 space-y-6">
           <ScrollZoomImage
             src={photos[1].src}
             alt={photos[1].alt || `${projectTitle} Detail Still 1`}
-            aspectClassName="aspect-[16/10]"
-            zoomRange={[1.0, 1.15]}
           />
           <ScrollZoomImage
             src={photos[2].src}
             alt={photos[2].alt || `${projectTitle} Detail Still 2`}
-            aspectClassName="aspect-[16/10]"
-            zoomRange={[1.0, 1.15]}
           />
         </div>
       </div>
     );
   }
 
-  // Case 4: 4 images -> 2x2 or reversed asymmetric
+  // Case 4: 4 images -> 2-column stacked in natural uncropped ratios
   if (photos.length === 4) {
     return (
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-        {photos.map((photo, i) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+        <div className="space-y-6">
           <ScrollZoomImage
-            key={photo.src + i}
+            src={photos[0].src}
+            alt={photos[0].alt || `${projectTitle} Still 1`}
+          />
+          <ScrollZoomImage
+            src={photos[2].src}
+            alt={photos[2].alt || `${projectTitle} Still 3`}
+          />
+        </div>
+        <div className="space-y-6">
+          <ScrollZoomImage
+            src={photos[1].src}
+            alt={photos[1].alt || `${projectTitle} Still 2`}
+          />
+          <ScrollZoomImage
+            src={photos[3].src}
+            alt={photos[3].alt || `${projectTitle} Still 4`}
+          />
+        </div>
+      </div>
+    );
+  }
+
+  // Case 5: 5+ images -> Alternating 2-column masonry in natural uncropped ratios
+  const leftColPhotos = photos.filter((_, i) => i % 2 === 0);
+  const rightColPhotos = photos.filter((_, i) => i % 2 === 1);
+
+  return (
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+      <div className="space-y-6">
+        {leftColPhotos.map((photo, i) => (
+          <ScrollZoomImage
+            key={photo.src + i * 2}
             src={photo.src}
-            alt={photo.alt || `${projectTitle} Still ${i + 1}`}
-            aspectClassName="aspect-[16/10]"
-            zoomRange={[1.0, 1.15]}
+            alt={photo.alt || `${projectTitle} Still ${i * 2 + 1}`}
           />
         ))}
       </div>
-    );
-  }
-
-  // Case 5: 5+ images -> First 3 in asymmetric layout, remainder in balanced grid
-  const primaryThree = photos.slice(0, 3);
-  const remaining = photos.slice(3);
-
-  return (
-    <div className="space-y-4 md:space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 items-stretch">
-        <div className="md:col-span-6 flex">
+      <div className="space-y-6">
+        {rightColPhotos.map((photo, i) => (
           <ScrollZoomImage
-            src={primaryThree[0].src}
-            alt={primaryThree[0].alt || `${projectTitle} Frame 1`}
-            aspectClassName="w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-auto md:h-full min-h-[380px]"
-            zoomRange={[1.0, 1.16]}
-          />
-        </div>
-        <div className="md:col-span-6 flex flex-col gap-4 md:gap-6 justify-between">
-          <ScrollZoomImage
-            src={primaryThree[1].src}
-            alt={primaryThree[1].alt || `${projectTitle} Frame 2`}
-            aspectClassName="aspect-[16/10]"
-            zoomRange={[1.0, 1.15]}
-          />
-          <ScrollZoomImage
-            src={primaryThree[2].src}
-            alt={primaryThree[2].alt || `${projectTitle} Frame 3`}
-            aspectClassName="aspect-[16/10]"
-            zoomRange={[1.0, 1.15]}
-          />
-        </div>
-      </div>
-
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-        {remaining.map((photo, i) => (
-          <ScrollZoomImage
-            key={photo.src + i}
+            key={photo.src + i * 2 + 1}
             src={photo.src}
-            alt={photo.alt || `${projectTitle} Frame ${i + 4}`}
-            aspectClassName="aspect-[4/3]"
-            zoomRange={[1.0, 1.15]}
+            alt={photo.alt || `${projectTitle} Still ${i * 2 + 2}`}
           />
         ))}
       </div>
@@ -351,14 +332,12 @@ export default function EventGallery() {
             </div>
           </header>
 
-          {/* HERO BANNER IMAGE (Displays once; never duplicated below) */}
+          {/* HERO BANNER IMAGE (Displays once in natural uncropped ratio; never duplicated below) */}
           <section className="w-full">
             <ScrollZoomImage
               src={event.cover}
               alt={event.coverAlt || `${event.title} Hero View`}
-              aspectClassName="aspect-[16/10] sm:aspect-[16/9] md:aspect-[21/9]"
               priority
-              zoomRange={[1.0, 1.15]}
             />
           </section>
 
