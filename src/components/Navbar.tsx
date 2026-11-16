@@ -15,11 +15,13 @@ export default function Navbar() {
   
   const isCommercePage = location.pathname === '/shop' || location.pathname.startsWith('/shop/') || location.pathname === '/cart';
   const isWorkDetailPage = location.pathname.startsWith('/work/');
+  const isAboutPage = location.pathname === '/';
+  const isDarkPage = isWorkDetailPage || isAboutPage;
 
   return (
     <>
       <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-colors duration-300 ${
-        isWorkDetailPage
+        isDarkPage
           ? 'bg-black/90 border-b border-neutral-900 text-white'
           : 'bg-background/95 border-b border-border text-foreground'
       }`}>
@@ -28,7 +30,7 @@ export default function Navbar() {
           <Button variant="ghost"
             onClick={() => setMenuOpen(true)}
             className={`h-auto p-0 text-xs uppercase hover:bg-transparent transition-opacity ${
-              isWorkDetailPage ? 'text-white hover:text-neutral-400' : 'text-foreground hover:opacity-60'
+              isDarkPage ? 'text-white hover:text-neutral-400' : 'text-foreground hover:opacity-60'
             }`}
             aria-label="Open menu"
           >
@@ -40,7 +42,7 @@ export default function Navbar() {
             to="/" 
             className="absolute left-1/2 -translate-x-1/2"
           >
-            <Logo className={isWorkDetailPage ? 'text-white' : ''} />
+            <Logo className={isDarkPage ? 'text-white' : ''} />
           </Link>
 
           {/* Right - Actions */}
@@ -49,7 +51,7 @@ export default function Navbar() {
               <Link
                 to="/archive"
                 className={`text-xs uppercase transition-opacity ${
-                  isWorkDetailPage ? 'text-white hover:text-neutral-400' : 'hover:opacity-60'
+                  isDarkPage ? 'text-white hover:text-neutral-400' : 'hover:opacity-60'
                 }`}
               >
                 Archive
