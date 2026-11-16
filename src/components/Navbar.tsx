@@ -14,15 +14,22 @@ export default function Navbar() {
   const location = useLocation();
   
   const isCommercePage = location.pathname === '/shop' || location.pathname.startsWith('/shop/') || location.pathname === '/cart';
+  const isWorkDetailPage = location.pathname.startsWith('/work/');
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border text-foreground">
+      <header className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-colors duration-300 ${
+        isWorkDetailPage
+          ? 'bg-black/90 border-b border-neutral-900 text-white'
+          : 'bg-background/95 border-b border-border text-foreground'
+      }`}>
         <nav className="nav-height flex items-center justify-between page-padding">
           {/* Left - Menu button */}
           <Button variant="ghost"
             onClick={() => setMenuOpen(true)}
-            className="h-auto p-0 text-xs uppercase hover:bg-transparent hover:opacity-60 transition-opacity"
+            className={`h-auto p-0 text-xs uppercase hover:bg-transparent transition-opacity ${
+              isWorkDetailPage ? 'text-white hover:text-neutral-400' : 'text-foreground hover:opacity-60'
+            }`}
             aria-label="Open menu"
           >
             Menu
@@ -33,7 +40,7 @@ export default function Navbar() {
             to="/" 
             className="absolute left-1/2 -translate-x-1/2"
           >
-            <Logo />
+            <Logo className={isWorkDetailPage ? 'text-white' : ''} />
           </Link>
 
           {/* Right - Actions */}
@@ -41,18 +48,22 @@ export default function Navbar() {
             {!isCommercePage && (
               <Link
                 to="/archive"
-                className="text-xs uppercase hover:opacity-60 transition-opacity"
+                className={`text-xs uppercase transition-opacity ${
+                  isWorkDetailPage ? 'text-white hover:text-neutral-400' : 'hover:opacity-60'
+                }`}
               >
                 Archive
               </Link>
             )}
-            {isCommercePage && <Button variant="ghost"
-              onClick={() => setCartOpen(true)}
-              className="h-auto p-0 text-xs uppercase hover:bg-transparent hover:opacity-60 transition-opacity"
-              aria-label="Cart"
-            >
-              Cart{totalItems > 0 && ` (${totalItems})`}
-            </Button>}
+            {isCommercePage && (
+              <Button variant="ghost"
+                onClick={() => setCartOpen(true)}
+                className="h-auto p-0 text-xs uppercase hover:bg-transparent hover:opacity-60 transition-opacity"
+                aria-label="Cart"
+              >
+                Cart{totalItems > 0 && ` (${totalItems})`}
+              </Button>
+            )}
           </div>
         </nav>
       </header>
