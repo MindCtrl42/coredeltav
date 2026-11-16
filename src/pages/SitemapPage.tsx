@@ -1,6 +1,6 @@
-import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 
 const SitemapPage = () => {
   const sections = [
@@ -35,10 +35,11 @@ const SitemapPage = () => {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Sitemap | coredeltav</title>
-        <meta name="description" content="Explore coredeltav’s portfolio, Shop, About and Contact pages." />
-      </Helmet>
+      <SEO
+        title="Sitemap — Site Directory"
+        description="Index and complete sitemap of coredeltav™ creative studio, visual archive, and physical product shop in Kathmandu, Nepal."
+        canonicalUrl="https://coredeltav.com/sitemap"
+      />
       
       <main className="min-h-screen pt-24 pb-16 px-4">
         <div className="max-w-2xl mx-auto">

@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 import { getEvent } from '@/data/portfolioData';
 
 export default function EventGallery() {
@@ -20,10 +20,25 @@ export default function EventGallery() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>{event.title} — coredeltav</title>
-        <meta name="description" content={event.description} />
-      </Helmet>
+      <SEO
+        title={`${event.title} — Visual Archive`}
+        description={event.description || `Visual work and photography series: ${event.title} by Sabin Bhandari / coredeltav™ in Kathmandu, Nepal.`}
+        canonicalUrl={`https://coredeltav.com/work/${encodeURIComponent(event.id)}`}
+        ogImage={event.cover}
+        jsonLd={{
+          '@type': 'VisualArtwork',
+          name: event.title,
+          description: event.description,
+          creator: {
+            '@type': 'Person',
+            name: 'Sabin Bhandari',
+            url: 'https://coredeltav.com',
+          },
+          genre: event.category,
+          artform: 'Photography / Cinematography',
+          image: event.cover,
+        }}
+      />
       <section className="page-padding pt-8 pb-16">
         <Link to="/archive" className="text-[10px] uppercase text-muted-foreground hover:text-foreground">← All work</Link>
         <div className="mt-6 mb-10 flex flex-col md:flex-row md:items-end md:justify-between gap-3">

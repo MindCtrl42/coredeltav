@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/Layout";
-import { Helmet } from "react-helmet-async";
+import SEO from "@/components/SEO";
 
 export default function NotFound() {
   return (
     <Layout>
-      <Helmet>
-        <title>Page Not Found — coredeltav™</title>
-      </Helmet>
+      <SEO
+        title="404 — Page Not Found"
+        description="The page you are looking for does not exist on coredeltav.com."
+      />
 
       <section className="min-h-[calc(100vh-3.5rem)] flex items-center justify-center page-padding">
         <div className="text-center">

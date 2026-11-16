@@ -1,13 +1,14 @@
-import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 
 const TermsPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Terms & Conditions | coredeltav™</title>
-        <meta name="description" content="Terms and conditions for coredeltav™ store." />
-      </Helmet>
+      <SEO
+        title="Terms & Conditions — Studio Policies"
+        description="Terms and conditions governing visual production commissions and store orders for coredeltav™ in Kathmandu, Nepal."
+        canonicalUrl="https://coredeltav.com/terms"
+      />
       
       <main className="min-h-screen pt-24 pb-16 px-4">
         <div className="max-w-2xl mx-auto">

@@ -1,6 +1,6 @@
-import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 import heroImage from '@/assets/coredeltav.png';
 import {
   Accordion,
@@ -12,53 +12,35 @@ import {
 export default function AboutPage() {
   return (
     <Layout>
-      <Helmet>
-        <title>coredeltav — Creative Director & Visual Storyteller</title>
-        <meta
-          name="description"
-          content="coredeltav — Creative Director, visual storyteller, and content creator based in Kathmandu, Nepal."
-        />
-      </Helmet>
+      <SEO
+        title="Creative Director & Visual Storyteller | Kathmandu, Nepal"
+        description="coredeltav™ is an independent creative studio and product practice in Kathmandu, Nepal led by Creative Director Sabin Bhandari. Specializing in cinematography, photography, creative direction, commercial video editing, and custom physical products."
+        canonicalUrl="https://coredeltav.com/"
+      />
 
-      {/* ABOUT SECTION - CENTERED */}
-      <section className="pt-16 pb-16 px-4 flex flex-col items-center text-center">
-        {/* Changed max-w-4xl to max-w-7xl to make it much wider */}
-        <div className="max-w-7xl w-full">
-          
-          {/* Changed md:h-[500px] to md:h-[75vh] for a massive height on desktop */}
-          <div className="w-full mb-12 overflow-hidden rounded-sm flex justify-center">
-            <img
-              src={heroImage}
-              alt="Coredeltav Banner"
-              className="w-full h-auto max-h-[75vh] object-contain"
-            />
-          </div>
+      {/* ABOUT HERO BANNER */}
+      <section className="pt-8 pb-16 px-4 md:px-8 max-w-7xl mx-auto w-full">
+        <div className="w-full overflow-hidden rounded-sm bg-black flex flex-col justify-center">
+          <img
+            src={heroImage}
+            alt="coredeltav"
+            className="w-full h-auto max-h-[75vh] object-contain mx-auto block"
+          />
 
-          {/* Bio Text & Link (Kept slightly narrower for reading comfort) */}
-          <div className="max-w-3xl mx-auto space-y-6 text-sm text-muted-foreground leading-relaxed mb-16">
-            
-            
-            <p>
-              coredeltav™ is an independent creative practice based in Kathmandu, Nepal, led by Sabin. 
+          {/* Bio text placed below the image (shifted down to prevent mixing with the graphic) */}
+          <div className="mt-8 md:mt-12 px-2 sm:px-4 md:px-6 max-w-xl text-left space-y-3">
+            <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
+              coredeltav™ is an independent creative practice based in Kathmandu, Nepal, led by Creative Director Sabin Bhandari.
             </p>
-
-            <p>
-              Working across visual storytelling, digital art, and physical product design, the studio specializes in cinematography, photography, creative direction, and video editing.
-
-coredeltav™ is a one-person studio—one mind behind the lens, the strategy, the physical making, and an obsessive focus on the small details. The work adapts to the idea.
+            <p className="text-xs sm:text-sm leading-relaxed text-muted-foreground">
+              Working across visual storytelling, digital art, and physical product design, the studio specializes in cinematography, photography, creative direction, and video editing. coredeltav™ is a one-person studio—one mind behind the lens, the strategy, the physical making, and an obsessive focus on the small details. The work adapts to the idea.
             </p>
-
-            <p className="font-medium text-foreground pb-4">
-              LET'S WORK TOGETHER <br />
-            </p>
-
-            {/* Contact to Hire Link */}
-            <div>
+            <div className="pt-2">
               <Link
                 to="/contact"
-                className="inline-block text-xs uppercase tracking-widest font-semibold text-foreground underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                className="inline-block text-xs uppercase tracking-widest font-semibold text-muted-foreground hover:text-foreground underline underline-offset-4 transition-colors"
               >
-                Reach Out→
+                Reach Out →
               </Link>
             </div>
           </div>
@@ -116,9 +98,8 @@ coredeltav™ is a one-person studio—one mind behind the lens, the strategy, t
                 Who is behind coredeltav™?
               </AccordionTrigger>
               <AccordionContent className="text-xs text-muted-foreground">
-                coredeltav™ is a one-person creative practice. One person
-                behind the camera, behind the designs, and occasionally
-                behind the unreasonable amount of time spent on small details.
+                coredeltav™ is an independent creative practice led by Sabin Bhandari. One person
+                behind the lens, behind the designs, and dedicated to deliberate craftsmanship, visual storytelling, and small details.
               </AccordionContent>
             </AccordionItem>
 

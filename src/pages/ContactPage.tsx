@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Loader2, CheckCircle } from 'lucide-react';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
@@ -105,13 +105,11 @@ export default function ContactPage() {
   if (isSubmitted) {
     return (
       <Layout>
-        <Helmet>
-          <title>Contact — coredeltav™</title>
-          <meta
-            name="description"
-            content="Get in touch with coredeltav™ for inquiries, projects, and orders."
-          />
-        </Helmet>
+        <SEO
+          title="Contact & Commission Inquiries — Kathmandu Studio"
+          description="Commission coredeltav™ and Creative Director Sabin Bhandari for cinematography, commercial video production, photography, and design practice in Kathmandu, Nepal."
+          canonicalUrl="https://coredeltav.com/contact"
+        />
 
         <section className="page-padding py-20">
           <div className="max-w-lg mx-auto text-center">
@@ -142,13 +140,11 @@ export default function ContactPage() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Contact — coredeltav™</title>
-        <meta
-          name="description"
-          content="Get in touch with coredeltav™ for inquiries, projects, and orders."
-        />
-      </Helmet>
+      <SEO
+        title="Contact & Commission Inquiries — Kathmandu Studio"
+        description="Commission coredeltav™ and Creative Director Sabin Bhandari for cinematography, commercial video production, photography, and design practice in Kathmandu, Nepal."
+        canonicalUrl="https://coredeltav.com/contact"
+      />
 
       <section className="page-padding py-20">
         <div className="max-w-lg mx-auto">

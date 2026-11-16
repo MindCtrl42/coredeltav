@@ -1,13 +1,14 @@
-import { Helmet } from "react-helmet-async";
 import Layout from "@/components/Layout";
+import SEO from "@/components/SEO";
 
 const PrivacyPage = () => {
   return (
     <Layout>
-      <Helmet>
-        <title>Privacy Policy | coredeltav</title>
-        <meta name="description" content="Privacy policy for coredeltav." />
-      </Helmet>
+      <SEO
+        title="Privacy Policy — Studio Data Practice"
+        description="Privacy policy outlining data collection, customer order details, and WhatsApp communication protocols for coredeltav™."
+        canonicalUrl="https://coredeltav.com/privacy"
+      />
       
       <main className="min-h-screen pt-24 pb-16 px-4">
         <div className="max-w-2xl mx-auto">

@@ -1,9 +1,10 @@
 import { create } from 'zustand';
 import { persist, createJSONStorage } from 'zustand/middleware';
 import { Product } from '@/data/productData';
-import { formatNPR, WHATSAPP_NUMBER } from '@/lib/currency';
+import { CustomerOrderDetails, getWhatsAppOrderUrl, CartItemLike } from '@/lib/whatsapp';
+import { useCustomerStore } from './customerStore';
 
-export interface CartItem {
+export interface CartItem extends CartItemLike {
   id: string;
   title: string;
   price: number;
@@ -19,22 +20,14 @@ interface CartStore {
   removeItem: (id: string) => void;
   clearCart: () => void;
   setOpen: (open: boolean) => void;
-  placeOrderRequest: () => void;
+  placeOrderRequest: (customer?: Partial<CustomerOrderDetails>) => void;
   getTotalItems: () => number;
   getTotalPrice: () => number;
 }
 
-export function buildWhatsAppUrl(items: CartItem[]) {
-  const total = items.reduce((s, i) => s + i.price * i.quantity, 0);
-  const lines = [
-    'Hello! I would like to place an order request:',
-    '',
-    ...items.map((i, n) => `${n + 1}. ${i.title} — Qty: ${i.quantity} — ${formatNPR(i.price * i.quantity)}`),
-    '',
-    `Total: ${formatNPR(total)}`,
-    '(Shipping to be calculated according to delivery location)',
-  ];
-  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join('\n'))}`;
+export function buildWhatsAppUrl(items: CartItem[], customer?: Partial<CustomerOrderDetails>) {
+  const currentCustomer = customer || useCustomerStore.getState().customer;
+  return getWhatsAppOrderUrl(items, currentCustomer);
 }
 
 export const useCartStore = create<CartStore>()(
@@ -58,10 +51,12 @@ export const useCartStore = create<CartStore>()(
       removeItem: id => set({ items: get().items.filter(i => i.id !== id) }),
       clearCart: () => set({ items: [] }),
       setOpen: isOpen => set({ isOpen }),
-      placeOrderRequest: () => {
+      placeOrderRequest: (customer) => {
         const { items } = get();
         if (items.length === 0) return;
-        window.open(buildWhatsAppUrl(items), '_blank', 'noopener,noreferrer');
+        const targetCustomer = customer || useCustomerStore.getState().customer;
+        const url = getWhatsAppOrderUrl(items, targetCustomer);
+        window.open(url, '_blank', 'noopener,noreferrer');
       },
       getTotalItems: () => get().items.reduce((s, i) => s + i.quantity, 0),
       getTotalPrice: () => get().items.reduce((s, i) => s + i.price * i.quantity, 0),

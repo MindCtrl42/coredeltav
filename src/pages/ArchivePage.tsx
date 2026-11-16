@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import Layout from '@/components/Layout';
+import SEO from '@/components/SEO';
 import PortfolioGallery from '@/components/PortfolioGallery';
 
 export default function ArchivePage() {
@@ -16,13 +16,11 @@ export default function ArchivePage() {
 
   return (
     <Layout>
-      <Helmet>
-        <title>Archive — coredeltav</title>
-        <meta
-          name="description"
-          content="Selected work and visual archive by coredeltav — Creative Director, visual storyteller, and content creator based in Kathmandu, Nepal."
-        />
-      </Helmet>
+      <SEO
+        title="Visual Archive & Portfolio — Creative Direction & Cinematography"
+        description="Explore the visual archive and curated portfolio of coredeltav™ and Sabin Bhandari in Kathmandu, Nepal. Cinematography, documentary stills, commercial video, and cultural narratives."
+        canonicalUrl="https://coredeltav.com/archive"
+      />
 
       {/* Video Loading Overlay */}
       {isPlaying && (
