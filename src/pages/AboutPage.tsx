@@ -100,7 +100,7 @@ export default function AboutPage() {
       {/* ═══════════════ HERO ═══════════════ */}
       <section
         ref={heroRef}
-        className="relative w-full min-h-[100svh] flex flex-col justify-center bg-black px-6 sm:px-10 md:h-screen md:min-h-0 md:overflow-hidden md:block md:px-0"
+        className="relative w-full min-h-[100svh] flex flex-col justify-between bg-black px-6 sm:px-10 md:h-screen md:min-h-0 md:overflow-hidden md:block md:px-0"
       >
         {/* Background graphic — original colors, not inverted */}
         <div className="absolute inset-0 h-full flex items-center justify-center pointer-events-none p-6 sm:p-10 md:p-16">
@@ -116,30 +116,30 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-        {/* Text overlay */}
-        <div className="relative z-10 w-full my-auto md:my-0 md:h-full md:flex md:flex-col md:justify-end md:px-16 lg:px-24">
+        {/* Text overlay — on mobile, deliverables pushed to top and studio pushed to bottom so neither collides with center image */}
+        <div className="relative z-10 w-full h-[100svh] min-h-[100svh] flex flex-col justify-between pt-20 pb-8 px-6 sm:px-10 md:h-full md:min-h-0 md:justify-end md:pt-0 md:pb-0 md:px-16 lg:px-24 pointer-events-none">
           <h1 className="sr-only">coredeltav™ Studio</h1>
 
-          {/* Deliverables left, Studio + tagline right */}
-          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8 md:mb-[14vh]">
-            {/* Left — Deliverables */}
-            <div className="space-y-1">
+          {/* Deliverables left/top, Studio + tagline right/bottom */}
+          <div className="flex flex-col justify-between h-full w-full sm:flex-row sm:items-end sm:h-auto md:mb-[14vh] pointer-events-auto">
+            {/* Top on mobile, Left on desktop — Deliverables */}
+            <div className="space-y-1 sm:space-y-1.5 pt-2 sm:pt-0">
               {DELIVERABLES.map((d) => (
                 <p
                   key={d}
-                  className="text-[11px] sm:text-xs md:text-sm font-semibold tracking-[0.15em] text-white"
+                  className="text-[10px] sm:text-xs md:text-sm font-semibold tracking-[0.18em] text-white"
                 >
                   {d}
                 </p>
               ))}
             </div>
 
-            {/* Right — Studio + tagline */}
-            <div className="text-right self-end sm:self-auto">
-              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none mb-2 md:mb-3 select-none">
+            {/* Bottom on mobile, Right on desktop — Studio + tagline */}
+            <div className="text-right self-end sm:self-auto space-y-2 pb-2 sm:pb-0">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none mb-1 md:mb-3 select-none">
                 Studio
               </p>
-              <p className="text-[11px] sm:text-xs md:text-sm text-neutral-400 max-w-xs leading-relaxed">
+              <p className="text-[11px] sm:text-xs md:text-sm text-neutral-400 max-w-xs leading-relaxed ml-auto">
                 An independent creative practice building visual stories, physical products, and digital experiences — one idea at a time.
               </p>
             </div>
@@ -156,64 +156,50 @@ export default function AboutPage() {
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 w-full items-start">
-            {/* Left — Services list */}
-            <Reveal className="w-full">
-              <div className="space-y-6 w-full">
-                {[
-                  {
-                    title: 'Cinematography',
-                    desc: 'High-end visual production for brands, events, and independent stories.',
-                  },
-                  {
-                    title: 'Photography',
-                    desc: 'Editorial, documentary, and product photography with intentional composition.',
-                  },
-                  {
-                    title: 'Creative Direction',
-                    desc: 'End-to-end visual strategy — from concept through final delivery.',
-                  },
-                  {
-                    title: 'Video Editing',
-                    desc: 'Commercial editing, color grading, and post-production with obsessive attention to pacing.',
-                  },
-                  {
-                    title: 'Product Design',
-                    desc: 'Custom-crafted physical goods — designed, prototyped, and produced in-house.',
-                  },
-                ].map((service) => (
-                  <div key={service.title} className="border-b border-neutral-800 pb-5 w-full">
-                    <h3 className="text-sm sm:text-base font-semibold text-white mb-1 tracking-wide">
-                      {service.title}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
-                      {service.desc}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            </Reveal>
-
-            {/* Right — Studio philosophy */}
-            <Reveal className="w-full">
-              <div className="space-y-6 w-full">
-                <p className="text-xl sm:text-2xl md:text-3xl font-medium text-white leading-snug">
-                  coredeltav™ is a one-person studio — one mind behind the lens, the strategy, the physical making, and an obsessive focus on the small details.
-                </p>
-                <p className="text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed w-full">
-                  Working across visual storytelling, digital art, and physical product design, the studio specializes in cinematography, photography, creative direction, and video editing. Based in Kathmandu, Nepal, every project is shaped by its own idea — the work adapts to the vision, not the other way around.
-                </p>
-                <div className="pt-4">
-                  <Link
-                    to="/contact"
-                    className="inline-block text-xs uppercase tracking-[0.15em] font-semibold text-white hover:text-neutral-400 underline underline-offset-4 transition-colors"
-                  >
-                    Start a conversation →
-                  </Link>
+          <Reveal className="w-full">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-8 w-full">
+              {[
+                {
+                  title: 'Cinematography',
+                  desc: 'High-end visual production for brands, events, and independent stories.',
+                },
+                {
+                  title: 'Photography',
+                  desc: 'Editorial, documentary, and product photography with intentional composition.',
+                },
+                {
+                  title: 'Creative Direction',
+                  desc: 'End-to-end visual strategy — from concept through final delivery.',
+                },
+                {
+                  title: 'Video Editing',
+                  desc: 'Commercial editing, color grading, and post-production with obsessive attention to pacing.',
+                },
+                {
+                  title: 'Product Design',
+                  desc: 'Custom-crafted physical goods — designed, prototyped, and produced in-house.',
+                },
+              ].map((service) => (
+                <div key={service.title} className="border-b border-neutral-800 pb-5 w-full">
+                  <h3 className="text-sm sm:text-base font-semibold text-white mb-1 tracking-wide">
+                    {service.title}
+                  </h3>
+                  <p className="text-xs sm:text-sm text-neutral-500 leading-relaxed">
+                    {service.desc}
+                  </p>
                 </div>
-              </div>
-            </Reveal>
-          </div>
+              ))}
+            </div>
+
+            <div className="pt-10">
+              <Link
+                to="/contact"
+                className="inline-block text-xs uppercase tracking-[0.15em] font-semibold text-white hover:text-neutral-400 underline underline-offset-4 transition-colors"
+              >
+                Start a conversation →
+              </Link>
+            </div>
+          </Reveal>
         </div>
       </section>
 

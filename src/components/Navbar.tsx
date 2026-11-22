@@ -47,7 +47,7 @@ export default function Navbar() {
 
           {/* Right - Actions */}
           <div className="flex items-center gap-4">
-            {!isCommercePage && (
+            {(!isCommercePage || totalItems === 0) && (
               <Link
                 to="/archive"
                 className={`text-xs uppercase transition-opacity ${
@@ -57,13 +57,13 @@ export default function Navbar() {
                 Archive
               </Link>
             )}
-            {isCommercePage && (
+            {isCommercePage && totalItems > 0 && (
               <Button variant="ghost"
                 onClick={() => setCartOpen(true)}
                 className="h-auto p-0 text-xs uppercase hover:bg-transparent hover:opacity-60 transition-opacity"
                 aria-label="Cart"
               >
-                Cart{totalItems > 0 && ` (${totalItems})`}
+                Cart ({totalItems})
               </Button>
             )}
           </div>
