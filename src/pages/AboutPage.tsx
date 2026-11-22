@@ -116,14 +116,14 @@ export default function AboutPage() {
           </motion.div>
         </div>
 
-        {/* Text overlay — on mobile, deliverables pushed to top and studio pushed to bottom so neither collides with center image */}
-        <div className="relative z-10 w-full h-[100svh] min-h-[100svh] flex flex-col justify-between pt-20 pb-8 px-6 sm:px-10 md:h-full md:min-h-0 md:justify-end md:pt-0 md:pb-0 md:px-16 lg:px-24 pointer-events-none">
+        {/* Text overlay — on mobile, deliverables ~5 lines above center image and studio ~5 lines below */}
+        <div className="relative z-10 w-full h-[100svh] min-h-[100svh] flex flex-col justify-between pt-[19svh] pb-[17svh] px-6 sm:px-10 md:h-full md:min-h-0 md:justify-end md:pt-0 md:pb-0 md:px-16 lg:px-24 pointer-events-none">
           <h1 className="sr-only">coredeltav™ Studio</h1>
 
           {/* Deliverables left/top, Studio + tagline right/bottom */}
-          <div className="flex flex-col justify-between h-full w-full sm:flex-row sm:items-end sm:h-auto md:mb-[14vh] pointer-events-auto">
+          <div className="flex flex-col justify-between h-full w-full md:flex-row md:items-end md:h-auto md:mb-[14vh] pointer-events-auto">
             {/* Top on mobile, Left on desktop — Deliverables */}
-            <div className="space-y-1 sm:space-y-1.5 pt-2 sm:pt-0">
+            <div className="space-y-1 sm:space-y-1.5">
               {DELIVERABLES.map((d) => (
                 <p
                   key={d}
@@ -135,7 +135,7 @@ export default function AboutPage() {
             </div>
 
             {/* Bottom on mobile, Right on desktop — Studio + tagline */}
-            <div className="text-right self-end sm:self-auto space-y-2 pb-2 sm:pb-0">
+            <div className="text-right self-end md:self-auto space-y-2">
               <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none mb-1 md:mb-3 select-none">
                 Studio
               </p>
