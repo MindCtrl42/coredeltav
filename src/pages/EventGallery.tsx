@@ -215,7 +215,6 @@ export default function EventGallery() {
   }
 
   // Metadata fallbacks
-  const year = event.year || '2024';
   const role = event.role || 'Creative Direction & Cinematography';
   const scope = event.scope || 'Visual Narrative & Documentary';
   const location = event.location || 'Kathmandu, Nepal';
@@ -285,15 +284,6 @@ export default function EventGallery() {
 
             {/* Right: Spec Meta Table with Thin Horizontal Dividers */}
             <div className="lg:col-span-5 border-t border-neutral-800 divide-y divide-neutral-800 text-xs">
-              <div className="py-3.5 flex justify-between items-baseline gap-4">
-                <span className="text-white font-medium uppercase tracking-wider text-[11px]">
-                  Year
-                </span>
-                <span className="text-neutral-400 font-mono">
-                  {year}
-                </span>
-              </div>
-
               <div className="py-3.5 flex justify-between items-baseline gap-4">
                 <span className="text-white font-medium uppercase tracking-wider text-[11px]">
                   Discipline

@@ -142,7 +142,7 @@ export const portfolioData: PortfolioEvent[] = [
     title: 'Living Traditions',
     category: 'LAKHE / Cultural Heritage',
     year: '2023',
-    role: 'Cultural Photography & Direction',
+    role: 'Cultural Photography & Stills',
     scope: 'Sacred Rituals & Living Heritage',
     location: 'Patan Durbar Square, Nepal',
     timeline: 'Festival Stills',
@@ -157,13 +157,6 @@ export const portfolioData: PortfolioEvent[] = [
         paragraphs: [
           'In the ancient stone squares of Patan, the Lakhe emerges—a fierce yet protective spirit whose dance reverberates through centuries of cultural memory.',
           'The visual framing isolates the kinetic power of the masked dancer against the historic brickwork, emphasizing texture, color contrast, and raw cultural gravitas.'
-        ]
-      },
-      {
-        topic: 'Visual Direction',
-        heading: 'Preserving ceremonial authenticity without staged theatricality.',
-        paragraphs: [
-          'Rather than treating the ritual as a spectacle for tourism, the camera approaches with reverence. Natural ambient shadows and the vivid red demonic mask create an arresting study of sacred motion.'
         ]
       }
     ]

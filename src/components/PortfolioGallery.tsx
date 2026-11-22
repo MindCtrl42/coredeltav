@@ -9,9 +9,20 @@ const projects = portfolioData.map(e => ({ id: e.id, title: e.title, category: e
 const slides = Array.from({ length: 3 }).flatMap(() => projects);
 
 export default function PortfolioGallery() {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'center', duration: 28 });
+  const [initialIndex] = useState(() => {
+    // Pick a random project to show first, offset into the middle repeat for smooth infinite looping
+    const randomProjectOffset = Math.floor(Math.random() * projects.length);
+    return projects.length + randomProjectOffset;
+  });
+
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: 'center',
+    duration: 28,
+    startIndex: initialIndex,
+  });
   const wheelRef = useRef<HTMLDivElement>(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(initialIndex);
   const navigate = useNavigate();
   const setViewingIndex = (i: number) => navigate(`/work/${projects[i].id}`);
   const onSelect = useCallback(() => {

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
-import heroImage from '@/assets/coredeltav.png';
+
+const heroImage = '/coredeltav%20sifi.png';
 import {
   Accordion,
   AccordionContent,
@@ -99,31 +100,28 @@ export default function AboutPage() {
       {/* ═══════════════ HERO ═══════════════ */}
       <section
         ref={heroRef}
-        className="relative w-full h-screen overflow-hidden bg-black flex items-center justify-center"
+        className="relative w-full min-h-[100svh] flex flex-col justify-center bg-black px-6 sm:px-10 md:h-screen md:min-h-0 md:overflow-hidden md:block md:px-0"
       >
-        {/* Background image — centered, inverted to work on black bg */}
-        <motion.div
-          style={{ scale: imageScale, opacity: imageOpacity }}
-          className="absolute inset-0 flex items-center justify-center"
-        >
-          <img
-            src={heroImage}
-            alt="coredeltav™"
-            className="w-full h-full object-contain mix-blend-difference invert"
-          />
-        </motion.div>
+        {/* Background graphic — original colors, not inverted */}
+        <div className="absolute inset-0 h-full flex items-center justify-center pointer-events-none p-6 sm:p-10 md:p-16">
+          <motion.div
+            style={{ scale: imageScale, opacity: imageOpacity }}
+            className="w-full h-full flex items-center justify-center"
+          >
+            <img
+              src={heroImage}
+              alt="coredeltav™"
+              className="w-full h-full object-contain pointer-events-none select-none"
+            />
+          </motion.div>
+        </div>
 
         {/* Text overlay */}
-        <div className="relative z-10 w-full h-full flex flex-col justify-center px-6 sm:px-10 md:px-16 lg:px-24">
-          {/* Center — Brand name */}
-          <div className="flex items-center justify-center">
-            <h1 className="text-[12vw] sm:text-[10vw] md:text-[9vw] lg:text-[8vw] font-bold leading-[0.9] tracking-tight text-white select-none whitespace-nowrap">
-              coredeltav™
-            </h1>
-          </div>
+        <div className="relative z-10 w-full my-auto md:my-0 md:h-full md:flex md:flex-col md:justify-end md:px-16 lg:px-24">
+          <h1 className="sr-only">coredeltav™ Studio</h1>
 
-          {/* Bottom overlay: deliverables left, "Studio" + tagline right */}
-          <div className="absolute bottom-[12vh] sm:bottom-[14vh] left-6 sm:left-10 md:left-16 lg:left-24 right-6 sm:right-10 md:right-16 lg:right-24 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8">
+          {/* Deliverables left, Studio + tagline right */}
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8 md:mb-[14vh]">
             {/* Left — Deliverables */}
             <div className="space-y-1">
               {DELIVERABLES.map((d) => (
@@ -137,8 +135,8 @@ export default function AboutPage() {
             </div>
 
             {/* Right — Studio + tagline */}
-            <div className="text-right">
-              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none mb-3 select-none">
+            <div className="text-right self-end sm:self-auto">
+              <p className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-none mb-2 md:mb-3 select-none">
                 Studio
               </p>
               <p className="text-[11px] sm:text-xs md:text-sm text-neutral-400 max-w-xs leading-relaxed">
@@ -150,18 +148,18 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════ DELIVERABLES SECTION ═══════════════ */}
-      <section className="bg-black py-24 sm:py-32 px-6 sm:px-10 md:px-16 lg:px-24">
-        <div className="max-w-6xl mx-auto">
+      <section className="bg-black py-24 sm:py-32 px-6 sm:px-10 md:px-16 lg:px-24 w-full">
+        <div className="w-full">
           <Reveal>
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-neutral-500 mb-10">
-              What We Do
+              Disciplines & Practice
             </p>
           </Reveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 w-full items-start">
             {/* Left — Services list */}
-            <Reveal>
-              <div className="space-y-6">
+            <Reveal className="w-full">
+              <div className="space-y-6 w-full">
                 {[
                   {
                     title: 'Cinematography',
@@ -184,7 +182,7 @@ export default function AboutPage() {
                     desc: 'Custom-crafted physical goods — designed, prototyped, and produced in-house.',
                   },
                 ].map((service) => (
-                  <div key={service.title} className="border-b border-neutral-800 pb-5">
+                  <div key={service.title} className="border-b border-neutral-800 pb-5 w-full">
                     <h3 className="text-sm sm:text-base font-semibold text-white mb-1 tracking-wide">
                       {service.title}
                     </h3>
@@ -197,12 +195,12 @@ export default function AboutPage() {
             </Reveal>
 
             {/* Right — Studio philosophy */}
-            <Reveal>
-              <div className="space-y-6">
-                <p className="text-lg sm:text-xl md:text-2xl font-medium text-white leading-snug">
+            <Reveal className="w-full">
+              <div className="space-y-6 w-full">
+                <p className="text-xl sm:text-2xl md:text-3xl font-medium text-white leading-snug">
                   coredeltav™ is a one-person studio — one mind behind the lens, the strategy, the physical making, and an obsessive focus on the small details.
                 </p>
-                <p className="text-xs sm:text-sm text-neutral-400 leading-relaxed">
+                <p className="text-xs sm:text-sm md:text-base text-neutral-400 leading-relaxed w-full">
                   Working across visual storytelling, digital art, and physical product design, the studio specializes in cinematography, photography, creative direction, and video editing. Based in Kathmandu, Nepal, every project is shaped by its own idea — the work adapts to the vision, not the other way around.
                 </p>
                 <div className="pt-4">
@@ -220,26 +218,26 @@ export default function AboutPage() {
       </section>
 
       {/* ═══════════════ FAQ SECTION ═══════════════ */}
-      <section className="bg-black py-20 sm:py-28 px-6 sm:px-10 md:px-16 lg:px-24 border-t border-neutral-900">
-        <div className="max-w-3xl mx-auto">
+      <section className="bg-black py-20 sm:py-28 px-6 sm:px-10 md:px-16 lg:px-24 border-t border-neutral-900 w-full">
+        <div className="w-full">
           <Reveal>
             <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-neutral-500 mb-10">
               Frequently Asked Questions
             </p>
           </Reveal>
 
-          <Reveal>
+          <Reveal className="w-full">
             <Accordion type="single" collapsible className="w-full">
               {FAQ_ITEMS.map((item) => (
                 <AccordionItem
                   key={item.id}
                   value={item.id}
-                  className="border-b border-neutral-800"
+                  className="border-b border-neutral-800 w-full"
                 >
-                  <AccordionTrigger className="text-xs sm:text-sm text-left text-white hover:text-neutral-300 py-5">
+                  <AccordionTrigger className="text-xs sm:text-sm md:text-base text-left text-white hover:text-neutral-300 py-6 hover:no-underline tracking-wide">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-xs sm:text-sm text-neutral-500 pb-5">
+                  <AccordionContent className="text-xs sm:text-sm md:text-base text-neutral-400 max-w-4xl pb-6 leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>
