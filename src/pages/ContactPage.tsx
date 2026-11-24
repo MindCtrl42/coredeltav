@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Loader2, CheckCircle, ArrowUpRight } from 'lucide-react';
+import { Loader2, CheckCircle, ArrowRight } from 'lucide-react';
 import Layout from '@/components/Layout';
 import SEO from '@/components/SEO';
 import { Button } from '@/components/ui/button';
@@ -136,40 +136,53 @@ export default function ContactPage() {
     setIsSubmitted(false);
   };
 
+  const stardustBg = {
+    backgroundColor: '#0c0c10',
+    backgroundImage:
+      'radial-gradient(circle at 20% 30%, rgba(246, 241, 227, 0.22) 0 1px, transparent 1.6px), radial-gradient(circle at 80% 70%, rgba(246, 241, 227, 0.12) 0 1.3px, transparent 2px), radial-gradient(circle at 50% 50%, rgba(246, 241, 227, 0.08) 0 2px, transparent 2.6px)',
+    backgroundSize: '71px 83px, 113px 97px, 197px 181px',
+    color: '#f6f1e3',
+  };
+
   if (isSubmitted) {
     return (
       <Layout>
         <SEO
-          title="Contact & Commission Inquiries — Kathmandu Studio"
-          description="Commission coredeltav™ and Creative Director Sabin Bhandari for cinematography, commercial video production, photography, and design practice in Kathmandu, Nepal."
+          title="Contact & Commission Inquiries — coredeltav™"
+          description="Commission coredeltav™ and Creative Director Sabin Bhandari for cinematography, commercial video production, photography, and design practice."
           canonicalUrl="https://coredeltav.com/contact"
         />
 
-        <section className="w-full px-6 sm:px-10 md:px-16 lg:px-24 py-24 sm:py-32">
-          <div className="max-w-xl mx-auto text-center space-y-6">
-            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-              <CheckCircle className="w-8 h-8 text-primary" />
+        <div className="min-h-[calc(100vh-3.5rem)] flex items-center justify-center px-6 py-24" style={stardustBg}>
+          <div className="max-w-md w-full text-center space-y-6 p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-sm">
+            <div className="w-16 h-16 rounded-full bg-[#ffe98a]/10 border border-[#ffe98a]/20 flex items-center justify-center mx-auto mb-2">
+              <CheckCircle className="w-8 h-8 text-[#ffe98a]" />
             </div>
 
-            <h1 className="text-2xl sm:text-3xl font-medium tracking-tight">
-              Message Sent
-            </h1>
+            <div className="space-y-2">
+              <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#ffe98a]">
+                Message Received
+              </p>
+              <h1 className="text-3xl font-extrabold tracking-tight text-[#f6f1e3]">
+                Thank You
+              </h1>
+            </div>
 
-            <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-              Thanks for reaching out. I'll get back to you as soon as I can.
+            <p className="text-sm text-[#f6f1e3]/70 leading-relaxed">
+              Your inquiry has been delivered directly. I will review it and get back to you shortly.
             </p>
 
             <div className="pt-4">
-              <Button
-                variant="outline"
+              <button
+                type="button"
                 onClick={handleReset}
-                className="text-xs uppercase tracking-widest px-6 py-5"
+                className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-[#ffe98a] text-[#0d137a] text-xs font-bold uppercase tracking-widest hover:bg-[#fff0a6] transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 Send Another Message
-              </Button>
+              </button>
             </div>
           </div>
-        </section>
+        </div>
       </Layout>
     );
   }
@@ -177,227 +190,210 @@ export default function ContactPage() {
   return (
     <Layout>
       <SEO
-        title="Contact & Commission Inquiries — Kathmandu Studio"
+        title="Contact & Commission Inquiries — coredeltav™"
         description="Commission coredeltav™ and Creative Director Sabin Bhandari for cinematography, commercial video production, photography, and design practice in Kathmandu, Nepal."
         canonicalUrl="https://coredeltav.com/contact"
       />
 
-      {/* ═══════════════ MAIN CONTACT SECTION (FULL WIDTH) ═══════════════ */}
-      <section className="w-full px-6 sm:px-10 md:px-16 lg:px-24 py-16 sm:py-24">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24 items-start">
-          
-          {/* Left Column: Editorial Information & Direct Channels */}
-          <div className="lg:col-span-5 space-y-8">
-            <div>
-              <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mb-3">
-                Inquiries & Commissions
-              </p>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight leading-tight mb-4">
-                Get in touch
-              </h1>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Have an idea, commercial project, commission inquiry, or something worth making? Reach out through the form or via direct channels.
-              </p>
-            </div>
-
-            <div className="pt-4 border-t border-border space-y-6">
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                  Location
-                </p>
-                <p className="text-xs sm:text-sm font-medium">
-                  Kathmandu, Nepal
-                </p>
-              </div>
-
-              <div>
-                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                  Direct Channels
-                </p>
-                <div className="space-y-2">
-                  <a
-                    href="https://www.instagram.com/coredeltav/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider underline underline-offset-4 hover:text-muted-foreground transition-colors"
-                  >
-                    <span>Instagram</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
+      <div className="min-h-screen w-full transition-colors" style={stardustBg}>
+        {/* ═══════════════ MAIN CONTACT SECTION ═══════════════ */}
+        <section className="w-full max-w-7xl mx-auto px-6 sm:px-10 md:px-16 lg:px-20 pt-16 sm:pt-24 pb-20 sm:pb-28">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-start">
+            
+            {/* Left Column: Heading & Editorial Intro */}
+            <div className="lg:col-span-5 space-y-6">
+              <div className="space-y-3">
+                <span className="inline-block text-[11px] font-mono uppercase tracking-[0.2em] text-[#ffe98a]">
+                  ( Inquiries & Commissions )
+                </span>
+                
+                <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#f6f1e3] leading-[1.02]">
+                  Get in
                   <br />
-                  <a
-                    href="https://wa.me/9779767834472"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider underline underline-offset-4 hover:text-muted-foreground transition-colors"
-                  >
-                    <span>Direct WhatsApp</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
+                  touch
+                </h1>
               </div>
+
+              <p className="text-sm sm:text-base text-[#f6f1e3]/75 leading-relaxed max-w-md">
+                Have an idea, a commercial project, a commission inquiry, or something worth making? Send it over through the form.
+              </p>
 
               <div className="pt-2">
-                <p className="text-[10px] uppercase tracking-[0.15em] text-muted-foreground mb-2">
-                  Support Practice
-                </p>
-                <a
-                  href="https://buymemomo.com/coredeltav"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider underline underline-offset-4 hover:text-muted-foreground transition-colors"
+                <span
+                  style={{
+                    fontFamily: "'Architects Daughter', cursive",
+                    fontSize: '19px',
+                    color: '#ffe98a',
+                    textDecoration: 'underline',
+                    textUnderlineOffset: '5px',
+                  }}
                 >
-                  <span>Buy Me Momo</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </a>
+                  Let's make something remarkable.
+                </span>
+              </div>
+
+              <div className="pt-4">
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-white/10 text-[11px] font-mono text-[#f6f1e3]/80">
+                  <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                  <span>Accepting select commissions & projects</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          {/* Right Column: Contact Form (Spans entire right half) */}
-          <div className="lg:col-span-7 w-full">
-            <form onSubmit={handleSubmit} className="space-y-6 w-full">
-              {/* Name + Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 w-full">
-                <div className="space-y-2">
-                  <Label htmlFor="name" className="text-xs uppercase tracking-wider">
-                    Name
+            {/* Right Column: Contact Form */}
+            <div className="lg:col-span-7 w-full p-6 sm:p-10 rounded-3xl bg-white/[0.025] border border-white/10 backdrop-blur-sm shadow-2xl shadow-black/40">
+              <form onSubmit={handleSubmit} className="space-y-6 w-full">
+                
+                {/* Name + Email */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full">
+                  <div className="space-y-2">
+                    <Label htmlFor="name" className="text-[11px] font-mono uppercase tracking-wider text-[#f6f1e3]/80">
+                      Name *
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      type="text"
+                      value={formData.name}
+                      onChange={(e) => handleChange('name', e.target.value)}
+                      placeholder="Your name"
+                      required
+                      className="h-12 bg-white/[0.04] border-white/15 focus:border-[#ffe98a] focus:ring-1 focus:ring-[#ffe98a] text-[#f6f1e3] placeholder:text-[#f6f1e3]/30 rounded-xl text-sm"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-[11px] font-mono uppercase tracking-wider text-[#f6f1e3]/80">
+                      Email *
+                    </Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={(e) => handleChange('email', e.target.value)}
+                      placeholder="your@email.com"
+                      required
+                      className="h-12 bg-white/[0.04] border-white/15 focus:border-[#ffe98a] focus:ring-1 focus:ring-[#ffe98a] text-[#f6f1e3] placeholder:text-[#f6f1e3]/30 rounded-xl text-sm"
+                    />
+                  </div>
+                </div>
+
+                {/* Phone */}
+                <div className="space-y-2 w-full">
+                  <Label htmlFor="phone" className="text-[11px] font-mono uppercase tracking-wider text-[#f6f1e3]/80">
+                    Phone Number
                   </Label>
                   <Input
-                    id="name"
-                    name="name"
-                    type="text"
-                    value={formData.name}
-                    onChange={(e) => handleChange('name', e.target.value)}
-                    placeholder="YOUR NAME"
-                    required
-                    className="h-12 text-xs uppercase placeholder:uppercase"
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={(e) => handleChange('phone', e.target.value)}
+                    placeholder="+977 / Phone number"
+                    className="h-12 bg-white/[0.04] border-white/15 focus:border-[#ffe98a] focus:ring-1 focus:ring-[#ffe98a] text-[#f6f1e3] placeholder:text-[#f6f1e3]/30 rounded-xl text-sm"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-xs uppercase tracking-wider">
-                    Email
+                {/* Inquiry Type */}
+                <div className="space-y-2 w-full">
+                  <Label htmlFor="inquiryType" className="text-[11px] font-mono uppercase tracking-wider text-[#f6f1e3]/80">
+                    What can coredeltav™ help with? *
                   </Label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={(e) => handleChange('email', e.target.value)}
-                    placeholder="YOUR@EMAIL.COM"
+                  <Select
+                    value={formData.inquiryType}
+                    onValueChange={(value) => handleChange('inquiryType', value)}
                     required
-                    className="h-12 text-xs placeholder:uppercase"
+                  >
+                    <SelectTrigger className="h-12 bg-white/[0.04] border-white/15 focus:border-[#ffe98a] focus:ring-1 focus:ring-[#ffe98a] text-[#f6f1e3] rounded-xl text-sm w-full">
+                      <SelectValue placeholder="Select an inquiry type" />
+                    </SelectTrigger>
+                    <SelectContent className="bg-[#121218] border-white/15 text-[#f6f1e3] rounded-xl">
+                      {INQUIRY_TYPES.map((type) => (
+                        <SelectItem
+                          key={type.value}
+                          value={type.value}
+                          className="text-xs focus:bg-[#ffe98a]/10 focus:text-[#ffe98a]"
+                        >
+                          {type.label}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2 w-full">
+                  <Label htmlFor="message" className="text-[11px] font-mono uppercase tracking-wider text-[#f6f1e3]/80">
+                    Message *
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={(e) => handleChange('message', e.target.value)}
+                    placeholder="Tell me about your project, idea, or timeline..."
+                    required
+                    rows={6}
+                    className="resize-none bg-white/[0.04] border-white/15 focus:border-[#ffe98a] focus:ring-1 focus:ring-[#ffe98a] text-[#f6f1e3] placeholder:text-[#f6f1e3]/30 rounded-xl text-sm w-full"
                   />
                 </div>
-              </div>
 
-              {/* Phone */}
-              <div className="space-y-2 w-full">
-                <Label htmlFor="phone" className="text-xs uppercase tracking-wider">
-                  Phone Number
-                </Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleChange('phone', e.target.value)}
-                  placeholder="YOUR PHONE NUMBER"
-                  className="h-12 text-xs placeholder:uppercase"
-                />
-              </div>
-
-              {/* Inquiry Type */}
-              <div className="space-y-2 w-full">
-                <Label htmlFor="inquiryType" className="text-xs uppercase tracking-wider">
-                  What can coredeltav™ help with?
-                </Label>
-                <Select
-                  value={formData.inquiryType}
-                  onValueChange={(value) => handleChange('inquiryType', value)}
-                  required
+                {/* Submit Pill Button */}
+                <button
+                  type="submit"
+                  disabled={isSubmitting || !formData.inquiryType}
+                  className="w-full h-14 rounded-full bg-[#ffe98a] text-[#0d137a] text-xs font-bold uppercase tracking-widest hover:bg-[#fff0a6] hover:scale-[1.005] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-[#ffe98a]/10 cursor-pointer"
                 >
-                  <SelectTrigger className="h-12 text-xs uppercase w-full">
-                    <SelectValue placeholder="SELECT AN OPTION" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {INQUIRY_TYPES.map((type) => (
-                      <SelectItem
-                        key={type.value}
-                        value={type.value}
-                        className="text-xs uppercase"
-                      >
-                        {type.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+                  {isSubmitting ? (
+                    <>
+                      <Loader2 className="w-4 h-4 animate-spin text-[#0d137a]" />
+                      <span>Sending...</span>
+                    </>
+                  ) : (
+                    <>
+                      <span>Send Message</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </>
+                  )}
+                </button>
+              </form>
+            </div>
 
-              {/* Message */}
-              <div className="space-y-2 w-full">
-                <Label htmlFor="message" className="text-xs uppercase tracking-wider">
-                  Message
-                </Label>
-                <Textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={(e) => handleChange('message', e.target.value)}
-                  placeholder="TELL ME WHAT'S ON YOUR MIND"
-                  required
-                  rows={6}
-                  className="resize-none text-xs placeholder:uppercase w-full"
-                />
-              </div>
-
-              {/* Submit */}
-              <Button
-                type="submit"
-                className="w-full h-12 text-xs uppercase tracking-widest font-semibold"
-                disabled={isSubmitting || !formData.inquiryType}
-              >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="w-4 h-4 mr-2 animate-spin" />
-                    Sending
-                  </>
-                ) : (
-                  'Send Message'
-                )}
-              </Button>
-            </form>
           </div>
+        </section>
 
-        </div>
-      </section>
+        {/* ═══════════════ FAQ SECTION ═══════════════ */}
+        <section className="w-full border-t border-white/10 py-20 sm:py-28">
+          <div className="max-w-4xl mx-auto px-6 sm:px-10">
+            <div className="mb-10 text-center sm:text-left space-y-2">
+              <span className="inline-block text-[11px] font-mono uppercase tracking-[0.2em] text-[#ffe98a]">
+                ( Frequently Asked Questions )
+              </span>
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#f6f1e3]">
+                Common Questions
+              </h2>
+            </div>
 
-      {/* ═══════════════ FAQ SECTION (FULL WIDTH FROM LEFT TO RIGHT) ═══════════════ */}
-      <section className="w-full px-6 sm:px-10 md:px-16 lg:px-24 py-20 sm:py-28 border-t border-border">
-        <div className="w-full">
-          <p className="text-[10px] sm:text-xs uppercase tracking-[0.2em] text-muted-foreground mb-10">
-            Frequently Asked Questions
-          </p>
-
-          <Accordion type="single" collapsible className="w-full">
-            {FAQ_ITEMS.map((item) => (
-              <AccordionItem
-                key={item.id}
-                value={item.id}
-                className="border-b border-border w-full"
-              >
-                <AccordionTrigger className="text-xs sm:text-sm md:text-base text-left hover:no-underline py-6 tracking-wide">
-                  {item.question}
-                </AccordionTrigger>
-                <AccordionContent className="text-xs sm:text-sm md:text-base text-muted-foreground max-w-4xl pb-6 leading-relaxed">
-                  {item.answer}
-                </AccordionContent>
-              </AccordionItem>
-            ))}
-          </Accordion>
-        </div>
-      </section>
+            <Accordion type="single" collapsible className="w-full divide-y divide-white/10">
+              {FAQ_ITEMS.map((item) => (
+                <AccordionItem
+                  key={item.id}
+                  value={item.id}
+                  className="border-b-0 py-1"
+                >
+                  <AccordionTrigger className="text-sm sm:text-base font-semibold text-[#f6f1e3] hover:text-[#ffe98a] hover:no-underline py-5 tracking-wide text-left transition-colors">
+                    {item.question}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-xs sm:text-sm md:text-base text-[#f6f1e3]/70 pb-6 leading-relaxed">
+                    {item.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        </section>
+      </div>
     </Layout>
   );
 }

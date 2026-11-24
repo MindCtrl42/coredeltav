@@ -16,7 +16,7 @@ export default function Navbar() {
   const isCommercePage = location.pathname === '/shop' || location.pathname.startsWith('/shop/') || location.pathname === '/cart';
   const isWorkDetailPage = location.pathname.startsWith('/work/');
   const isAboutPage = location.pathname === '/';
-  const isDarkPage = isWorkDetailPage || isAboutPage;
+  const isDarkPage = isWorkDetailPage || isAboutPage || location.pathname === '/contact';
 
   return (
     <>
