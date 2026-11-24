@@ -238,7 +238,7 @@ export const letsGo = (pokes: number) => pokes > 0 && pokes % LET_GO === 0
 // ---- themes: the badge cycles them instantly, as the reference's colour rotator does
 export const THEMES = [
   { name: "Cobalt", bg: "#2731e8", fg: "#ffe98a", deep: "#0d137a" },
-  { name: "Tomato", bg: "#ff4a2e", fg: "#6e0d05", deep: "#3d0702", pillBg: "#000000", pillFg: "#ffffff", ghostFg: "#ffffff" },
+  { name: "Tomato", bg: "#ff4a2e", fg: "#6e0d05", deep: "#3d0702", pillBg: "#000000", pillFg: "#ffffff", ghostFg: "#000000" },
   { name: "Night", bg: "#0c0c10", fg: "#f6f1e3", deep: "#000000" },
   { name: "Pistachio", bg: "#b9e27c", fg: "#ffffff", deep: "#ffffff", pillBg: "#142a0a", pillFg: "#ffffff", ghostFg: "#ffffff" },
 ] as const
