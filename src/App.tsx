@@ -15,6 +15,7 @@ import PrivacyPage from "./pages/PrivacyPage";
 import SitemapPage from "./pages/SitemapPage";
 import CartPage from "./pages/CartPage";
 import NotFound from "./pages/NotFound";
+import StarWarsAudioPlayer from "./components/StarWarsAudioPlayer";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
         <BrowserRouter>
           <SmoothScroll>
             <Toaster position="top-center" />
+            <StarWarsAudioPlayer />
             <Routes>
               <Route path="/" element={<AboutPage />} />
               <Route path="/about" element={<Navigate to="/" replace />} />
