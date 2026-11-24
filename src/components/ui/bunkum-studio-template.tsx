@@ -238,9 +238,9 @@ export const letsGo = (pokes: number) => pokes > 0 && pokes % LET_GO === 0
 // ---- themes: the badge cycles them instantly, as the reference's colour rotator does
 export const THEMES = [
   { name: "Cobalt", bg: "#2731e8", fg: "#ffe98a", deep: "#0d137a" },
-  { name: "Tomato", bg: "#ff4a2e", fg: "#6e0d05", deep: "#3d0702" },
+  { name: "Tomato", bg: "#ff4a2e", fg: "#6e0d05", deep: "#3d0702", pillBg: "#6e0d05", pillFg: "#ffffff", ghostFg: "#ffffff" },
   { name: "Night", bg: "#0c0c10", fg: "#f6f1e3", deep: "#000000" },
-  { name: "Pistachio", bg: "#b9e27c", fg: "#1d3a12", deep: "#0f2208" },
+  { name: "Pistachio", bg: "#b9e27c", fg: "#ffffff", deep: "#ffffff", pillBg: "#142a0a", pillFg: "#ffffff", ghostFg: "#ffffff" },
 ] as const
 export const nextTheme = (i: number) => (i + 1) % THEMES.length
 
@@ -330,7 +330,7 @@ const CSS =
   /* nav: pills in the letter colour, labels that roll up right-to-left with a springy settle */
   ".bkm-chrome{position:sticky;top:0;height:0;z-index:50}" +
   ".bkm-nav{position:absolute;left:0;right:0;top:0;display:flex;gap:8px;padding:18px 18px 0;pointer-events:none}" +
-  ".bkm-pill{position:relative;display:flex;align-items:center;height:48px;padding:0 14px 0 18px;border:0;border-radius:51px;background:var(--butter);color:var(--deep);font:inherit;font-size:17px;font-weight:700;letter-spacing:-.015em;text-decoration:none;cursor:pointer;pointer-events:auto;transition:transform .55s cubic-bezier(.2,1.6,.4,1)}" +
+  ".bkm-pill{position:relative;display:flex;align-items:center;height:48px;padding:0 14px 0 18px;border:0;border-radius:51px;background:var(--pill-bg,var(--butter));color:var(--pill-fg,var(--deep));font:inherit;font-size:17px;font-weight:700;letter-spacing:-.015em;text-decoration:none;cursor:pointer;pointer-events:auto;transition:transform .55s cubic-bezier(.2,1.6,.4,1)}" +
   ".bkm-pill[data-near]{transition:transform .1s linear}" +
   ".bkm-pill:focus-visible,.bkm-hit:focus-visible{outline:2px solid var(--butter);outline-offset:3px}" +
   ".bkm-brand{flex:2;justify-content:space-between;font-weight:800;letter-spacing:.01em}" +
@@ -415,7 +415,7 @@ const CSS =
   ".bkm-sub{max-width:34ch;margin:clamp(22px,4vh,36px) 0 0;font-size:clamp(16px,1.4vw,21px);font-weight:700;line-height:1.3}" +
   ".bkm-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(26px,5vh,44px)}" +
   ".bkm-cta{height:56px;padding:0 24px;font-size:16px;gap:12px}" +
-  ".bkm-cta.bkm-ghost{background:transparent;color:var(--butter);box-shadow:inset 0 0 0 2px var(--butter)}" +
+  ".bkm-cta.bkm-ghost{background:transparent;color:var(--ghost-fg,var(--butter));box-shadow:inset 0 0 0 2px var(--ghost-fg,var(--butter))}" +
   ".bkm-cta>span{display:inline-flex;align-items:center;gap:12px;transition:transform .55s cubic-bezier(.2,1.6,.4,1)}" +
   ".bkm-cta[data-near]>span{transition:transform .1s linear}" +
   ".bkm-cta svg{width:16px;height:16px}" +
@@ -444,10 +444,10 @@ const CSS =
   ".bkm-lbbtn{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;border:1.5px solid var(--paper);background:none;color:var(--paper);cursor:pointer;font:inherit;font-size:18px}" +
   ".bkm-lbbtn:focus-visible{outline:2px solid var(--butter);outline-offset:3px}" +
   /* toast + context label (the system cursor stays, as on the reference) */
-  ".bkm-toast{position:fixed;left:50%;bottom:24px;z-index:80;transform:translate(-50%,calc(100% + 48px));padding:12px 18px;border-radius:999px;background:var(--butter);color:var(--deep);font-weight:800;font-size:14px;transition:transform .5s cubic-bezier(.2,1.5,.4,1);pointer-events:none;white-space:nowrap}" +
+  ".bkm-toast{position:fixed;left:50%;bottom:24px;z-index:80;transform:translate(-50%,calc(100% + 48px));padding:12px 18px;border-radius:999px;background:var(--pill-bg,var(--butter));color:var(--pill-fg,var(--deep));font-weight:800;font-size:14px;transition:transform .5s cubic-bezier(.2,1.5,.4,1);pointer-events:none;white-space:nowrap}" +
   ".bkm-toast[data-on]{transform:translate(-50%,0)}" +
   ".bkm-cursor{display:none;position:fixed;left:0;top:0;z-index:90;pointer-events:none}" +
-  ".bkm-clab{position:absolute;left:16px;top:16px;padding:6px 10px;border-radius:999px;background:var(--butter);color:var(--deep);white-space:nowrap;opacity:0;transform:scale(.5);transform-origin:0 0;transition:transform .3s cubic-bezier(.2,1.5,.4,1),opacity .15s}" +
+  ".bkm-clab{position:absolute;left:16px;top:16px;padding:6px 10px;border-radius:999px;background:var(--pill-bg,var(--butter));color:var(--pill-fg,var(--deep));white-space:nowrap;opacity:0;transform:scale(.5);transform-origin:0 0;transition:transform .3s cubic-bezier(.2,1.5,.4,1),opacity .15s}" +
   ".bkm-cursor[data-label] .bkm-clab{opacity:1;transform:none}" +
   "@media (hover:hover) and (pointer:fine){.bkm-cursor{display:block}}" +
   ".bkm-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}" +
@@ -875,7 +875,14 @@ export default function BunkumStudioTemplate({
 
   const vbh = vbH(base)
   const th = THEMES[theme]
-  const vars = { "--blue": th.bg, "--butter": th.fg, "--deep": th.deep } as Record<string, string>
+  const vars = {
+    "--blue": th.bg,
+    "--butter": th.fg,
+    "--deep": th.deep,
+    "--pill-bg": "pillBg" in th && (th as any).pillBg ? (th as any).pillBg : th.fg,
+    "--pill-fg": "pillFg" in th && (th as any).pillFg ? (th as any).pillFg : th.deep,
+    "--ghost-fg": "ghostFg" in th && (th as any).ghostFg ? (th as any).ghostFg : th.fg,
+  } as Record<string, string>
   for (const k of Object.keys(IMG)) vars["--bk-" + k] = "url(" + IMG[k] + ")"
   const rootStyle = { ...vars, ...style } as CSSProperties
   const stage = { height } as CSSProperties
