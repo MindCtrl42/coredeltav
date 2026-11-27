@@ -5,8 +5,7 @@ export default function AboutPage() {
   return (
     <>
       <SEO
-        title="coredeltav™ | Studio & Visual Storytelling"
-        description="coredeltav™ is an independent creative practice led by Sabin Bhandari in Kathmandu, Nepal. Working across visual storytelling, digital art, physical product design, cinematography, and photography."
+        description="coredeltav™ is an independent creative studio led by Sabin Bhandari — a creative director in Nepal, visual storyteller Kathmandu, cinematographer in Kathmandu, and photographer in Kathmandu, Nepal."
         canonicalUrl="https://coredeltav.com/"
       />
       <BunkumStudioTemplate commissionAction={{ label: "Start a commission", href: "/contact" }} />

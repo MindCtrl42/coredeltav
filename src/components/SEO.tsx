@@ -19,23 +19,24 @@ export interface SEOProps {
   };
 }
 
-const DEFAULT_TITLE = 'coredeltav™ — Creative Director & Visual Storyteller | Kathmandu, Nepal';
+const DEFAULT_TITLE =
+  'coredeltav™ — Sabin Bhandari | Creative Director, Visual Storyteller, Cinematographer & Photographer in Kathmandu, Nepal';
 const DEFAULT_DESCRIPTION =
-  'coredeltav™ is an independent creative studio and product practice in Kathmandu, Nepal led by Creative Director Sabin Bhandari. Specializing in cinematography, photography, creative direction, commercial video editing, and custom physical products.';
+  'coredeltav™ is an independent creative studio led by Sabin Bhandari — a creative director in Nepal, visual storyteller Kathmandu, cinematographer in Kathmandu, and photographer in Kathmandu, Nepal.';
 const DEFAULT_KEYWORDS = [
   'Sabin Bhandari',
   'coredeltav',
-  'coredeltav Kathmandu',
-  'Creative Director Nepal',
-  'Creative Director Kathmandu',
-  'Cinematographer Nepal',
-  'Visual Storyteller Nepal',
-  'Commercial Video Editor Kathmandu',
-  'Photography Studio Kathmandu',
-  'Minimalist Product Design Nepal',
-  'Film Director Nepal',
-  'Art Director Kathmandu',
-  'Brand Strategy Nepal',
+  'coredeltav™',
+  'creative director in Nepal',
+  'visual storyteller Kathmandu',
+  'cinematographer in Kathmandu',
+  'photographer in Kathmandu, Nepal',
+  'Creative Direction',
+  'Visual Storytelling',
+  'Cinematography',
+  'Photography',
+  'Video Editing',
+  'Graphic Design',
   'coredeltav.com',
 ].join(', ');
 const SITE_URL = 'https://coredeltav.com';
@@ -91,9 +92,9 @@ export default function SEO({
         '@type': 'Person',
         '@id': `${SITE_URL}/#sabin-bhandari`,
         name: 'Sabin Bhandari',
-        jobTitle: 'Creative Director & Visual Storyteller',
+        jobTitle: 'Creative Director, Visual Storyteller, Cinematographer & Photographer',
         description:
-          'Sabin Bhandari is an independent Creative Director, visual storyteller, cinematographer, and product maker based in Kathmandu, Nepal.',
+          'Sabin Bhandari is an independent creative director in Nepal, visual storyteller Kathmandu, cinematographer in Kathmandu, and photographer in Kathmandu, Nepal.',
         url: SITE_URL,
         worksFor: {
           '@id': `${SITE_URL}/#studio`,
@@ -104,12 +105,12 @@ export default function SEO({
         ],
         knowsAbout: [
           'Creative Direction',
+          'Visual Storytelling',
           'Cinematography',
-          'Commercial Video Editing',
-          'Editorial Photography',
-          'Visual Production',
+          'Photography',
+          'Video Editing',
+          'Graphic Design',
           'Minimalist Product Design',
-          'Physical Product Craftsmanship',
           'Brand Identity & Narrative Strategy',
         ],
         address: {
@@ -133,51 +134,55 @@ export default function SEO({
       },
       hasOfferCatalog: {
         '@type': 'OfferCatalog',
-        name: 'Coredeltav Creative Practice Offerings',
+        name: 'coredeltav™ Creative Services',
         itemListElement: [
           {
-            '@type': 'OfferCatalog',
-            name: 'Visual Production & Creative Direction',
-            itemListElement: [
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Creative Direction & Commercial Cinematography',
-                  description: 'End-to-end film direction, camera operation, and narrative pacing.',
-                },
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Commercial Video Editing & Color Grading',
-                  description: 'Editorial cutting, sound design, and color finishing.',
-                },
-              },
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Service',
-                  name: 'Editorial & Brand Photography',
-                  description: 'High-end visual still production and creative staging.',
-                },
-              },
-            ],
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Creative Direction',
+              description: 'End-to-end creative direction, art direction, and concept development in Kathmandu, Nepal.',
+            },
           },
           {
-            '@type': 'OfferCatalog',
-            name: 'Studio Physical Products',
-            itemListElement: [
-              {
-                '@type': 'Offer',
-                itemOffered: {
-                  '@type': 'Product',
-                  name: 'Custom Crafted Physical Goods & Minimalist Objects',
-                  description: 'Tangible design pieces crafted and released in Kathmandu.',
-                },
-              },
-            ],
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Visual Storytelling',
+              description: 'Documentary and commercial visual storytelling for founders, startups, cultural festivals, and brands.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Cinematography',
+              description: 'Commercial cinematography, film direction, and camera production in Kathmandu, Nepal.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Photography',
+              description: 'Editorial, portrait, brand, and live event photography in Kathmandu, Nepal.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Video Editing',
+              description: 'High-retention commercial video editing, sound design, and color grading.',
+            },
+          },
+          {
+            '@type': 'Offer',
+            itemOffered: {
+              '@type': 'Service',
+              name: 'Graphic Design',
+              description: 'Graphic design, illustration, and visual identity systems.',
+            },
           },
         ],
       },
